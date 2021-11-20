@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D3CCD342749025700696239 /* HW3.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D3CCD332749025700696239 /* HW3.storyboard */; };
+		1D3CCD36274916CB00696239 /* MyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3CCD35274916CB00696239 /* MyMapView.swift */; };
 		1D51DA58273E868500076142 /* ActivityClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D51DA57273E868500076142 /* ActivityClass.swift */; };
 		1D51DA5C273E924000076142 /* CellFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D51DA5A273E924000076142 /* CellFinal.swift */; };
 		1D51DA5D273E924000076142 /* CellFinal.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D51DA5B273E924000076142 /* CellFinal.xib */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		1D3CCD332749025700696239 /* HW3.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HW3.storyboard; sourceTree = "<group>"; };
+		1D3CCD35274916CB00696239 /* MyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapView.swift; sourceTree = "<group>"; };
 		1D51DA57273E868500076142 /* ActivityClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityClass.swift; sourceTree = "<group>"; };
 		1D51DA5A273E924000076142 /* CellFinal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFinal.swift; sourceTree = "<group>"; };
 		1D51DA5B273E924000076142 /* CellFinal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellFinal.xib; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				1D3CCD332749025700696239 /* HW3.storyboard */,
+				1D3CCD35274916CB00696239 /* MyMapView.swift */,
 			);
 			path = "Дз3";
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 				1DE4E5C7270A5CCE004A30CA /* SceneDelegate.swift in Sources */,
 				1D51DA5C273E924000076142 /* CellFinal.swift in Sources */,
 				1D51DA58273E868500076142 /* ActivityClass.swift in Sources */,
+				1D3CCD36274916CB00696239 /* MyMapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
