@@ -40,7 +40,7 @@ class MyMapViewController: UIViewController{
             }
         }
     
-    
+    private let userLocationIdentifier = "user_icon"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,12 +70,21 @@ extension MyMapViewController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer{
         if let polyline = overlay as? MKPolyline {
             let render = MKPolylineRenderer(polyline: polyline)
-            render.fillColor = UIColor.blue
-            render.strokeColor = UIColor.blue
+            render.fillColor = UIColor(named: "ForPolylineColor")
+            render.strokeColor = UIColor(named: "ForPolylineColor")
             render.lineWidth = 5
             return render
             
         }
         return MKOverlayRenderer(overlay: overlay)
+    }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let annotation = annotation as? MKUserLocation{
+            let dequedView = mapView.dequeueReusableAnnotationView(withIdentifier: userLocationIdentifier)
+            let view = dequedView ?? MKAnnotationView(annotation: annotation, reuseIdentifier: userLocationIdentifier)
+            view.image = UIImage(named: "LocationMarker")
+            return view
+        }
+        return nil
     }
 }
