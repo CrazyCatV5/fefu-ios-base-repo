@@ -10,31 +10,37 @@ import MapKit
 import CoreLocation
 
 class MyMapViewController: UIViewController{
-    @IBOutlet weak var myMap: MKMapView!
+    @IBOutlet weak var mapView: MKMapView!
     let myLocationManager: CLLocationManager = {
         let myManager = CLLocationManager()
         myManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         return myManager
         
     }()
-    var myLocation: CLLocation?{
-        didSet{
-            if oldValue == nil, let myLocation = myLocation{
-                let region = MKCoordinateRegion(center: myLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
-                myMap.setRegion(region, animated: true)
-                myLocationHistory.append(myLocation)
-            }
-        }
-    }
     
     fileprivate var myLocationHistory: [CLLocation] = []{
         didSet{
-            let coordinates = myLocationHistory.map{$0.coordinate}
+            let coordinates = myLocationHistory.map{ $0.coordinate }
             let route = MKPolyline(coordinates: coordinates, count: coordinates.count)
             route.title = "здесь могла быть ваша реклама"
-            myMap.addOverlay(route)
+            mapView.addOverlay(route)
         }
     }
+    
+    fileprivate var myLocation: CLLocation?{
+        didSet{
+            guard let myLocation = myLocation else{
+                return
+            }
+            
+                let region = MKCoordinateRegion(center: myLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+                mapView.setRegion(region, animated: true)
+                
+                myLocationHistory.append(myLocation)
+            }
+        }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +51,9 @@ class MyMapViewController: UIViewController{
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.topItem?.title = "Назад"
         self.title = "Новая активность"
-        myMap.showsUserLocation = true
+        self.mapView.showsUserLocation = true
+        self.mapView.delegate = self
+        
     }
 }
 
@@ -60,7 +68,7 @@ extension MyMapViewController: CLLocationManagerDelegate{
 
 extension MyMapViewController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer{
-        if let polyline = overlay as? MKPolyline{
+        if let polyline = overlay as? MKPolyline {
             let render = MKPolylineRenderer(polyline: polyline)
             render.fillColor = UIColor.blue
             render.strokeColor = UIColor.blue
