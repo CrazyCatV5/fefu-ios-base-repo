@@ -25,6 +25,7 @@ class MyMapViewController: UIViewController{
         myManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         return myManager
     }()
+    var distanceTotal: Double! = 0
     @IBAction func click(sender: UIButton) {
         titleOfActivity.text = selectedTitle
         startview.isHidden = true
@@ -52,8 +53,14 @@ class MyMapViewController: UIViewController{
             
                 let region = MKCoordinateRegion(center: myLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
                 mapView.setRegion(region, animated: true)
-                
-                myLocationHistory.append(myLocation)
+            
+            let temp = myLocationHistory.last
+            myLocationHistory.append(myLocation)
+            if(myLocationHistory.count > 1){
+                let distanceCur = myLocationHistory.last?.distance(from: temp! )
+                distanceTotal += distanceCur!
+                distance.text = "\(round(distanceTotal)/1000 ) km"
+                }
             }
         }
     
@@ -73,6 +80,7 @@ class MyMapViewController: UIViewController{
         self.mapView.delegate = self
         activityCollection.delegate = self
         activityCollection.dataSource = self
+
     }
 }
 
