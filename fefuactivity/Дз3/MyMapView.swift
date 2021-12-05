@@ -57,7 +57,6 @@ class MyMapViewController: UIViewController{
         self.mapView.delegate = self
         activityCollection.delegate = self
         activityCollection.dataSource = self
-        
     }
 }
 
@@ -70,6 +69,9 @@ extension MyMapViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "activitiTypeCell", for: indexPath) as! CollectionViewCell
         cell.title.text = activitiesName[indexPath.item]
         cell.image.image = UIImage(named: "Image")
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.cornerRadius = 10
         return cell
     }
     
