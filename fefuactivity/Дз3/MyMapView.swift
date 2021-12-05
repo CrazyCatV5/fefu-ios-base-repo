@@ -25,6 +25,8 @@ class MyMapViewController: UIViewController{
         myManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         return myManager
     }()
+    var startTime = Date()
+    var finishTime = Date()
     var distanceTotal: Double! = 0
     @IBAction func click(sender: UIButton) {
         titleOfActivity.text = selectedTitle
@@ -57,6 +59,12 @@ class MyMapViewController: UIViewController{
             let temp = myLocationHistory.last
             myLocationHistory.append(myLocation)
             if(myLocationHistory.count > 1){
+                finishTime = Date()
+                let dateDiff = Calendar.current.dateComponents([.hour, .minute,.second], from: startTime, to: finishTime)
+                let hours = dateDiff.hour! > 9 ? "\(dateDiff.hour!)" : "0\(dateDiff.hour!)"
+                let minutes = dateDiff.minute! > 9 ? "\(dateDiff.minute!)" : "0\(dateDiff.minute!)"
+                let seconds = dateDiff.second! > 9 ? "\(dateDiff.second!)" : "0\(dateDiff.second!)"
+                time.text = "\(hours):\(minutes):\(seconds)"
                 let distanceCur = myLocationHistory.last?.distance(from: temp! )
                 distanceTotal += distanceCur!
                 distance.text = "\(round(distanceTotal)/1000 ) km"
