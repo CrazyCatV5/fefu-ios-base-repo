@@ -43,7 +43,7 @@ class MyMapViewController: UIViewController{
         }
     
     private let userLocationIdentifier = "user_icon"
-    
+    var selectedTitle = "тест"
     override func viewDidLoad() {
         super.viewDidLoad()
         myLocationManager.delegate = self
@@ -64,13 +64,24 @@ extension MyMapViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         activitiesName.count
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.cellForItem(at: indexPath)!.layer.borderColor = UIColor.purple.cgColor
+        let testCell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
+        selectedTitle = testCell.title.text!
+    }
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        collectionView.cellForItem(at: indexPath)!.layer.borderColor = UIColor.black.cgColor
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "activitiTypeCell", for: indexPath) as! CollectionViewCell
         cell.title.text = activitiesName[indexPath.item]
         cell.image.image = UIImage(named: "Image")
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor.black.cgColor
+        if (indexPath.item == 0){
+            cell.layer.borderColor = UIColor.purple.cgColor
+            selectedTitle = cell.title.text!
+        }
         cell.layer.cornerRadius = 10
         return cell
     }
