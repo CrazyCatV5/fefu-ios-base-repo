@@ -17,6 +17,7 @@ class MyMapViewController: UIViewController{
     @IBOutlet weak var startview: UIView!
     @IBOutlet weak var activityView: UIView!
     @IBOutlet weak var finishButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var activityCollection: UICollectionView!
     @IBOutlet weak var start: UIButton!
     var activitiesName = ["велосипед", "бег", "догонялки с ОМОНом"]
@@ -32,11 +33,25 @@ class MyMapViewController: UIViewController{
         titleOfActivity.text = selectedTitle
         startview.isHidden = true
         activityView.isHidden = false
+        startTime = Date()
+        finishTime = Date()
+    }
+    var pauseTest = false
+    @IBAction func clickPause(sender: UIButton) {
+        if (pauseTest){
+            pauseButton.setImage( UIImage(named: "imagename"), for: .normal)
+            pauseTest = false
+        } else {
+            pauseButton.setImage( UIImage(named: "pause.fill"), for: .normal)
+            pauseTest = true
+        }
     }
     @IBAction func clickOut(sender: UIButton) {
             titleOfActivity.text = selectedTitle
             startview.isHidden = false
             activityView.isHidden = true
+            startTime = Date()
+        distanceTotal = 0
     }
     fileprivate var myLocationHistory: [CLLocation] = []{
         didSet{
@@ -58,7 +73,7 @@ class MyMapViewController: UIViewController{
             
             let temp = myLocationHistory.last
             myLocationHistory.append(myLocation)
-            if(myLocationHistory.count > 1){
+            if(myLocationHistory.count > 1 && !pauseTest){
                 finishTime = Date()
                 let dateDiff = Calendar.current.dateComponents([.hour, .minute,.second], from: startTime, to: finishTime)
                 let hours = dateDiff.hour! > 9 ? "\(dateDiff.hour!)" : "0\(dateDiff.hour!)"

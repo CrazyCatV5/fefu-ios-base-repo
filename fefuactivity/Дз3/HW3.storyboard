@@ -135,6 +135,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="pause.fill" catalog="system" title=" "/>
+                                        <connections>
+                                            <action selector="clickPauseWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="EoU-ot-198"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IjF-Mx-78R">
                                         <rect key="frame" x="219" y="198" width="56" height="56"/>
@@ -176,6 +179,7 @@
                         <outlet property="distance" destination="k7Q-97-9AM" id="1Ej-kW-FDv"/>
                         <outlet property="finishButton" destination="IjF-Mx-78R" id="2Uy-IW-AvU"/>
                         <outlet property="mapView" destination="Ig0-Zc-ivF" id="7oQ-eV-3Lg"/>
+                        <outlet property="pauseButton" destination="eGk-Su-2vJ" id="t1P-Kr-KrN"/>
                         <outlet property="start" destination="cXE-oJ-z1E" id="yj6-MV-STL"/>
                         <outlet property="startview" destination="LWc-nv-wik" id="IgP-5M-EVn"/>
                         <outlet property="time" destination="IDd-bz-MGn" id="fxZ-oK-Obu"/>
