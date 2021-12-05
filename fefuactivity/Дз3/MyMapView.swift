@@ -10,16 +10,31 @@ import MapKit
 import CoreLocation
 
 class MyMapViewController: UIViewController{
+    @IBOutlet weak var titleOfActivity: UILabel!
+    @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var startview: UIView!
+    @IBOutlet weak var activityView: UIView!
+    @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var activityCollection: UICollectionView!
+    @IBOutlet weak var start: UIButton!
     var activitiesName = ["велосипед", "бег", "догонялки с ОМОНом"]
     let myLocationManager: CLLocationManager = {
         let myManager = CLLocationManager()
         myManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         return myManager
-        
     }()
-    
+    @IBAction func click(sender: UIButton) {
+        titleOfActivity.text = selectedTitle
+        startview.isHidden = true
+        activityView.isHidden = false
+    }
+    @IBAction func clickOut(sender: UIButton) {
+            titleOfActivity.text = selectedTitle
+            startview.isHidden = false
+            activityView.isHidden = true
+    }
     fileprivate var myLocationHistory: [CLLocation] = []{
         didSet{
             let coordinates = myLocationHistory.map{ $0.coordinate }
@@ -46,6 +61,7 @@ class MyMapViewController: UIViewController{
     var selectedTitle = "тест"
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityView.isHidden = true
         myLocationManager.delegate = self
         myLocationManager.requestAlwaysAuthorization()
         myLocationManager.startUpdatingLocation()
