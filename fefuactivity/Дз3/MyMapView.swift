@@ -11,6 +11,8 @@ import CoreLocation
 
 class MyMapViewController: UIViewController{
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var activityCollection: UICollectionView!
+    var activitiesName = ["велосипед", "бег", "догонялки с ОМОНом"]
     let myLocationManager: CLLocationManager = {
         let myManager = CLLocationManager()
         myManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
@@ -53,10 +55,26 @@ class MyMapViewController: UIViewController{
         self.title = "Новая активность"
         self.mapView.showsUserLocation = true
         self.mapView.delegate = self
+        activityCollection.delegate = self
+        activityCollection.dataSource = self
         
     }
 }
 
+extension MyMapViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        activitiesName.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "activitiTypeCell", for: indexPath) as! CollectionViewCell
+        cell.title.text = activitiesName[indexPath.item]
+        cell.image.image = UIImage(named: "Image")
+        return cell
+    }
+    
+    
+}
 extension MyMapViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:[CLLocation]){
         guard let curentLocation = locations.first else{
