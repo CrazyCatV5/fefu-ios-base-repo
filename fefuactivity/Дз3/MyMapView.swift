@@ -85,8 +85,7 @@ class MyMapViewController: UIViewController{
         } catch{
             
         }
-        let ActivityClass = ActivityStartViewController()
-        ActivityClass.AlmostWorkingTableView.reloadData()
+
             titleOfActivity.text = selectedTitle
             startview.isHidden = false
             activityView.isHidden = true
