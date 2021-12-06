@@ -28,6 +28,12 @@ class MyMapViewController: UIViewController{
     }()
     var startTime = Date()
     var finishTime = Date()
+    var trueStartTime = Date()
+    var diftime = Date()
+    var difSec = 0
+    var difMin = 0
+    var difHour = 0
+    var difTotal = [0,0,0]
     var distanceTotal: Double! = 0
     @IBAction func click(sender: UIButton) {
         titleOfActivity.text = selectedTitle
@@ -41,9 +47,25 @@ class MyMapViewController: UIViewController{
         if (pauseTest){
             pauseButton.setImage( UIImage(named: "imagename"), for: .normal)
             pauseTest = false
+            difTotal[0] = difSec
+            difTotal[1] = difMin
+            difTotal[2] = difHour
+            if (difTotal[0] > 59){
+                difTotal[0] -= 60
+                difTotal[1] += 1
+            }
+            if (difTotal[1] > 59){
+                difTotal[1] -= 60
+                difTotal[2] += 1
+            }
+            difSec = 0
+            difMin = 0
+            difHour = 0
+
         } else {
             pauseButton.setImage( UIImage(named: "pause.fill"), for: .normal)
             pauseTest = true
+            diftime = Date()
         }
     }
     @IBAction func clickOut(sender: UIButton) {
@@ -73,12 +95,19 @@ class MyMapViewController: UIViewController{
             
             let temp = myLocationHistory.last
             myLocationHistory.append(myLocation)
+            if(pauseTest){
+                let dateDiff = Calendar.current.dateComponents([.hour, .minute,.second], from: diftime, to: finishTime)
+                difSec = dateDiff.second ??  0
+                difMin = dateDiff.minute ??  0
+                difHour = dateDiff.hour ??  0
+                finishTime = Date()
+            }
             if(myLocationHistory.count > 1 && !pauseTest){
                 finishTime = Date()
                 let dateDiff = Calendar.current.dateComponents([.hour, .minute,.second], from: startTime, to: finishTime)
-                let hours = dateDiff.hour! > 9 ? "\(dateDiff.hour!)" : "0\(dateDiff.hour!)"
-                let minutes = dateDiff.minute! > 9 ? "\(dateDiff.minute!)" : "0\(dateDiff.minute!)"
-                let seconds = dateDiff.second! > 9 ? "\(dateDiff.second!)" : "0\(dateDiff.second!)"
+                let hours = dateDiff.hour! - difTotal[2] > 9 ? "\(dateDiff.hour! - difTotal[2])" : "0\(dateDiff.hour! - difTotal[2])"
+                let minutes = dateDiff.minute! - difTotal[1] > 9 ? "\(dateDiff.minute! - difTotal[1])" : "0\(dateDiff.minute! - difTotal[1])"
+                let seconds = dateDiff.second! - difTotal[0] > 9 ? "\( dateDiff.second! - difTotal[0])" : "0\( dateDiff.second! - difTotal[0])"
                 time.text = "\(hours):\(minutes):\(seconds)"
                 let distanceCur = myLocationHistory.last?.distance(from: temp! )
                 distanceTotal += distanceCur!
