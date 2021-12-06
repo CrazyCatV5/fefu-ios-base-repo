@@ -80,7 +80,13 @@ class MyMapViewController: UIViewController{
         newTest.date = startTime
         newTest.distanse = distanceTotal
         
-        
+        do {
+            try context.save()
+        } catch{
+            
+        }
+        let ActivityClass = ActivityStartViewController()
+        ActivityClass.AlmostWorkingTableView.reloadData()
             titleOfActivity.text = selectedTitle
             startview.isHidden = false
             activityView.isHidden = true
