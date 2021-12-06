@@ -43,6 +43,7 @@ class MyMapViewController: UIViewController{
         activityView.isHidden = false
         startTime = Date()
         finishTime = Date()
+        distanceTotal = 0
     }
     var pauseTest = false
     @IBAction func clickPause(sender: UIButton) {
@@ -79,11 +80,9 @@ class MyMapViewController: UIViewController{
         newTest.title = titleOfActivity.text
         newTest.date = startTime
         newTest.distanse = distanceTotal
-        
         do {
             try context.save()
         } catch{
-            activityCollection.isHidden = true
             }
 
             titleOfActivity.text = selectedTitle

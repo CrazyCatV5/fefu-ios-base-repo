@@ -17,18 +17,14 @@ class ActivityStartViewController:
     var items:[Activities]?
     func fetchMePlease(){
         do {
+            self.AlmostWorkingTableView.reloadData()
             items = try context.fetch(Activities.fetchRequest())
-            DispatchQueue.main.async {
-                self.AlmostWorkingTableView.reloadData()
-            }
         }
         catch{
-            FirstView.isHidden = false
-            FirstView.backgroundColor = UIColor.blue
         }
     }
     let idCell = "CellFinal"
-    let time = ["Вчера","Май 2022 года"]
+
     @IBOutlet weak var AlmostWorkingTableView: UITableView!
     @IBOutlet weak var FirstView: UIView!
     override func viewDidLoad() {
@@ -37,8 +33,14 @@ class ActivityStartViewController:
         AlmostWorkingTableView.dataSource = self;
         AlmostWorkingTableView.delegate = self;
         AlmostWorkingTableView.register(UINib(nibName: "CellFinal", bundle:nil), forCellReuseIdentifier: idCell)
+        fetchMePlease()
+        
         self.AlmostWorkingTableView.rowHeight = 220
         AlmostWorkingTableView.backgroundColor = UIColor.clear
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        AlmostWorkingTableView.reloadData()
     }
 
 }
@@ -54,12 +56,15 @@ extension ActivityStartViewController: UITableViewDataSource, UITableViewDelegat
         let date = Calendar.current.dateComponents([.day, .hour, .minute,.second], from: activityFinal.date!, to: Date())
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellFinal", for: indexPath) as! CellFinal
         cell.type.text = activityFinal.title
-        cell.lenght.text = "\(activityFinal.distanse/1000)km"
+        cell.lenght.text = "\(round(activityFinal.distanse)/1000)km"
         let hours = Calendar.current.component(.hour, from: time)
         let minutes = Calendar.current.component(.minute, from: time)
         cell.title.text = "\(date.day ?? 0) дней назад"
-        if (date.day! < 1){
+        if (date.day! < 2){
             cell.title.text = "вчера"
+        }
+        if (date.day! < 1){
+            cell.title.text = "сегодня"
         }
         cell.timeAfter.text = "\(date.hour ?? 0) часов назад"
         cell.time.text = "\(hours) часов \(minutes) минут"
