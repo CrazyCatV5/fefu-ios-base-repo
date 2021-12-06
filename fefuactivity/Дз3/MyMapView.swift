@@ -83,8 +83,8 @@ class MyMapViewController: UIViewController{
         do {
             try context.save()
         } catch{
-            
-        }
+            activityCollection.isHidden = true
+            }
 
             titleOfActivity.text = selectedTitle
             startview.isHidden = false

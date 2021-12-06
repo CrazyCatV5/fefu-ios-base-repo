@@ -23,7 +23,8 @@ class ActivityStartViewController:
             }
         }
         catch{
-            
+            FirstView.isHidden = false
+            FirstView.backgroundColor = UIColor.blue
         }
     }
     let idCell = "CellFinal"
@@ -44,7 +45,7 @@ class ActivityStartViewController:
 
 extension ActivityStartViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items?.count ??  0
+        return items?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
