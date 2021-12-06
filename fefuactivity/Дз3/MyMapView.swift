@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 import CoreLocation
-
+import CoreData
 class MyMapViewController: UIViewController{
     @IBOutlet weak var titleOfActivity: UILabel!
     @IBOutlet weak var distance: UILabel!
@@ -20,12 +20,14 @@ class MyMapViewController: UIViewController{
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var activityCollection: UICollectionView!
     @IBOutlet weak var start: UIButton!
+    var task: [NSManagedObject] = []
     var activitiesName = ["велосипед", "бег", "догонялки с ОМОНом"]
     let myLocationManager: CLLocationManager = {
         let myManager = CLLocationManager()
         myManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         return myManager
     }()
+    var dateDiff = DateComponents()
     var startTime = Date()
     var finishTime = Date()
     var trueStartTime = Date()
@@ -69,6 +71,16 @@ class MyMapViewController: UIViewController{
         }
     }
     @IBAction func clickOut(sender: UIButton) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        let newTest = Activities(context: context)
+        newTest.time = Calendar(identifier: .gregorian).date(from: dateDiff)
+        
+        newTest.title = titleOfActivity.text
+        newTest.date = startTime
+        newTest.distanse = distanceTotal
+        
+        
             titleOfActivity.text = selectedTitle
             startview.isHidden = false
             activityView.isHidden = true
@@ -96,18 +108,23 @@ class MyMapViewController: UIViewController{
             let temp = myLocationHistory.last
             myLocationHistory.append(myLocation)
             if(pauseTest){
+                finishTime = Date()
                 let dateDiff = Calendar.current.dateComponents([.hour, .minute,.second], from: diftime, to: finishTime)
                 difSec = dateDiff.second ??  0
                 difMin = dateDiff.minute ??  0
                 difHour = dateDiff.hour ??  0
-                finishTime = Date()
             }
             if(myLocationHistory.count > 1 && !pauseTest){
                 finishTime = Date()
-                let dateDiff = Calendar.current.dateComponents([.hour, .minute,.second], from: startTime, to: finishTime)
+                dateDiff = Calendar.current.dateComponents([.hour, .minute,.second], from: startTime, to: finishTime)
                 let hours = dateDiff.hour! - difTotal[2] > 9 ? "\(dateDiff.hour! - difTotal[2])" : "0\(dateDiff.hour! - difTotal[2])"
                 let minutes = dateDiff.minute! - difTotal[1] > 9 ? "\(dateDiff.minute! - difTotal[1])" : "0\(dateDiff.minute! - difTotal[1])"
+                if (dateDiff.second! - difTotal[0] < 0){
+                    dateDiff.minute! -= 1
+                    dateDiff.second! += 60
+                }
                 let seconds = dateDiff.second! - difTotal[0] > 9 ? "\( dateDiff.second! - difTotal[0])" : "0\( dateDiff.second! - difTotal[0])"
+                
                 time.text = "\(hours):\(minutes):\(seconds)"
                 let distanceCur = myLocationHistory.last?.distance(from: temp! )
                 distanceTotal += distanceCur!
