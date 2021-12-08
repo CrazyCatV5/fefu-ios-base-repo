@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D134A64275CEA8E0090C27E /* ActivitySave.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1D134A62275CEA8E0090C27E /* ActivitySave.xcdatamodeld */; };
+		1D134A66275D23AD0090C27E /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D134A65275D23AD0090C27E /* CollectionViewCell.swift */; };
 		1D3CCD342749025700696239 /* HW3.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D3CCD332749025700696239 /* HW3.storyboard */; };
 		1D3CCD36274916CB00696239 /* MyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3CCD35274916CB00696239 /* MyMapView.swift */; };
 		1D51DA58273E868500076142 /* ActivityClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D51DA57273E868500076142 /* ActivityClass.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D134A63275CEA8E0090C27E /* ActivitySave.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ActivitySave.xcdatamodel; sourceTree = "<group>"; };
+		1D134A65275D23AD0090C27E /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		1D3CCD332749025700696239 /* HW3.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HW3.storyboard; sourceTree = "<group>"; };
 		1D3CCD35274916CB00696239 /* MyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapView.swift; sourceTree = "<group>"; };
 		1D51DA57273E868500076142 /* ActivityClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityClass.swift; sourceTree = "<group>"; };
@@ -52,6 +56,7 @@
 			children = (
 				1D3CCD332749025700696239 /* HW3.storyboard */,
 				1D3CCD35274916CB00696239 /* MyMapView.swift */,
+				1D134A65275D23AD0090C27E /* CollectionViewCell.swift */,
 			);
 			path = "Дз3";
 			sourceTree = "<group>";
@@ -84,6 +89,7 @@
 		1DE4E5C3270A5CCE004A30CA /* fefuactivity */ = {
 			isa = PBXGroup;
 			children = (
+				1D134A62275CEA8E0090C27E /* ActivitySave.xcdatamodeld */,
 				1D3CCD322749022B00696239 /* Дз3 */,
 				1D51DA59273E91DE00076142 /* Cell */,
 				1DE4E5C4270A5CCE004A30CA /* AppDelegate.swift */,
@@ -172,9 +178,11 @@
 			files = (
 				1DE4E5C9270A5CCE004A30CA /* ViewController.swift in Sources */,
 				1DE4E5C5270A5CCE004A30CA /* AppDelegate.swift in Sources */,
+				1D134A66275D23AD0090C27E /* CollectionViewCell.swift in Sources */,
 				1DE4E5C7270A5CCE004A30CA /* SceneDelegate.swift in Sources */,
 				1D51DA5C273E924000076142 /* CellFinal.swift in Sources */,
 				1D51DA58273E868500076142 /* ActivityClass.swift in Sources */,
+				1D134A64275CEA8E0090C27E /* ActivitySave.xcdatamodeld in Sources */,
 				1D3CCD36274916CB00696239 /* MyMapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +391,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1D134A62275CEA8E0090C27E /* ActivitySave.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1D134A63275CEA8E0090C27E /* ActivitySave.xcdatamodel */,
+			);
+			currentVersion = 1D134A63275CEA8E0090C27E /* ActivitySave.xcdatamodel */;
+			path = ActivitySave.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1DE4E5B9270A5CCE004A30CA /* Project object */;
 }
