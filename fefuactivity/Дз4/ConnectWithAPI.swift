@@ -4,23 +4,7 @@
 //
 //  Created by wsr5 on 19.12.2021.
 //
-
 import Foundation
-
-struct Gender: Decodable {
-    let code: Int
-    let name: String
-}
-
-struct UserLoginReq: Encodable {
-    let login: String
-    let password: String
-}
-
-struct UserResp: Decodable {
-    let token: String
-    let user: UserModel
-}
 
 struct UserRegBody: Encodable {
     let login: String
@@ -29,6 +13,23 @@ struct UserRegBody: Encodable {
     let gender: Int
 }
 
+struct UserLoginBody: Encodable {
+    let login: String
+    let password: String
+}
+
+struct ApiError: Decodable {
+    let errors: Dictionary<String, [String]>
+}
+
+struct LoginErrors: Decodable {
+    let login: [String]
+}
+
+struct Gender: Decodable {
+    let code: Int
+    let name: String
+}
 
 struct UserModel: Decodable, Identifiable {
     let id: Int
@@ -37,63 +38,29 @@ struct UserModel: Decodable, Identifiable {
     let gender: Gender
 }
 
-class AuthRegUrlManager {
+struct AuthUserModel: Decodable {
+    let token: String
+    let user: UserModel
+}
+
+class AuthService {
+    static private let registerEndpoint: String = "https://fefu.t.feip.co/api/auth/register"
+    static private let loginEndpoint: String = "https://fefu.t.feip.co/api/auth/login"
     
-    static let instance = AuthRegUrlManager()
-    
-    static let encoder = JSONEncoder()
     static let decoder = JSONDecoder()
+    static let encoder = JSONEncoder()
     
-    
-    private init() {
-        AuthRegUrlManager.encoder.keyEncodingStrategy = .convertToSnakeCase
-        AuthRegUrlManager.decoder.keyDecodingStrategy = .convertFromSnakeCase
+    init() {
+        AuthService.decoder.keyDecodingStrategy = .convertFromSnakeCase
+        AuthService.encoder.keyEncodingStrategy = .convertToSnakeCase
     }
     
-    
-    
-    func login(_ body: Data,
-               completion: @escaping ((UserResp) -> Void)) {
+    static func register(_ body: Data,
+                         completion: @escaping ((AuthUserModel) -> Void),
+                         onError :@escaping((ApiError) -> Void)) {
         
-        guard let url = URL(string: "https://fefu.t.feip.co/api/auth/login") else {
-            return //   URL! Andrew zapretil (ban!)
-        }
-        
-        var urlReq = URLRequest(url: url)
-        
-        urlReq.httpMethod = "POST"
-        urlReq.httpBody = body
-        urlReq.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlReq.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let session = URLSession.shared
-        
-        let task = session.dataTask(with: urlReq) { data, response, error in
-            
-            guard let data = data else {
-                return
-            }
-            do {
-                let userData = try AuthRegUrlManager.decoder.decode(UserResp.self, from: data)
-                completion(userData)
-                return
-            } catch _ {
-                if let res = response as? HTTPURLResponse {
-                    print("Eror:", res.statusCode)
-                } else {
-                    print("Something very very bad")
-                }
-            }
-            
-        }
-        
-        task.resume()
-    }
-    
-    static func reg(_ body: Data,
-                    completion: @escaping ((UserResp) -> Void)) {
-        
-        guard let url = URL(string: "https://fefu.t.feip.co/api/auth/register") else {
+        guard let url = URL(string: registerEndpoint) else {
+            print("Invalid URL")
             return
         }
         
@@ -110,20 +77,78 @@ class AuthRegUrlManager {
             guard let data = data else {
                 return
             }
-            do {
-                let userData = try AuthRegUrlManager.decoder.decode(UserResp.self, from: data)
-                completion(userData)
-            } catch _ {
-                if let res = response as? HTTPURLResponse {
-                    print("Eror:", res.statusCode)
-                } else {
-                    print("Something very very bad")
+            
+            if let res = response as? HTTPURLResponse {
+                switch res.statusCode {
+                case 422:
+                    do {
+                        let errData = try AuthService.decoder.decode(ApiError.self, from: data)
+                        onError(errData)
+                        return
+                    } catch let e {
+                        print("Decode error: \(e)")
+                    }
+                case 201:
+                    do {
+                        let userData = try AuthService.decoder.decode(AuthUserModel.self, from: data)
+                        completion(userData)
+                        return
+                    } catch let e {
+                        print("Decode error: \(e)")
+                    }
+                default:
+                    return
                 }
-                
             }
         }
+        task.resume()
+    }
+    
+    static func login(_ body: Data,
+                      completion: @escaping ((AuthUserModel) -> Void),
+                      onError :@escaping((ApiError) -> Void)) {
+        guard let url = URL(string: loginEndpoint) else {
+            print("Invalid URL")
+            return
+        }
         
+        var urlReq = URLRequest(url: url)
+        urlReq.httpMethod = "POST"
+        urlReq.httpBody = body
+        urlReq.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlReq.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: urlReq) { data, response, error in
+            
+            guard let data = data else {
+                return
+            }
+            
+            if let res = response as? HTTPURLResponse {
+                switch res.statusCode {
+                case 422:
+                    do {
+                        let errData = try AuthService.decoder.decode(ApiError.self, from: data)
+                        onError(errData)
+                        return
+                    } catch let e {
+                        print("Decode error: \(e)")
+                    }
+                case 200:
+                    do {
+                        let userData = try AuthService.decoder.decode(AuthUserModel.self, from: data)
+                        completion(userData)
+                        return
+                    } catch let e {
+                        print("Decode error: \(e)")
+                    }
+                default:
+                    return
+                }
+            }
+        }
         task.resume()
     }
 }
-    
