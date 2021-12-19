@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0zT-xx-m0g">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0zT-xx-m0g">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -152,6 +152,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="Button:" destination="c2l-7g-LhH" eventType="touchUpInside" id="kBt-7y-m8l"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вход" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="999-OI-9Kp">
                                 <rect key="frame" x="20" y="150" width="374" height="41"/>
@@ -199,6 +202,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="11c-f2-ya1"/>
+                    <connections>
+                        <outlet property="LoginText" destination="F5h-G5-ICY" id="0Gc-OY-Jyn"/>
+                        <outlet property="PasswordText" destination="MiB-Q2-iK8" id="wGL-qa-cs4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KQ-01-Bn1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -238,6 +245,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="Button:" destination="ht6-Sh-RXO" eventType="touchUpInside" id="jlw-3j-7MP"/>
                                     <segue destination="1f3-go-jgE" kind="presentation" id="9o6-jb-j8C"/>
                                 </connections>
                             </button>
@@ -355,6 +363,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9oi-BC-Dde"/>
+                    <connections>
+                        <outlet property="Gender" destination="Tvz-nE-0e1" id="6zl-Zr-0aJ"/>
+                        <outlet property="LoginText" destination="aSI-BM-4wb" id="S0o-Ce-HMT"/>
+                        <outlet property="Name" destination="sEA-yu-Guj" id="m9J-X9-xrU"/>
+                        <outlet property="PasswordText" destination="Z06-VU-IUv" id="NqX-ZP-hBi"/>
+                        <outlet property="SecondPasswordText" destination="GNN-f6-NwG" id="bxR-lg-PDf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KAI-OI-162" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
