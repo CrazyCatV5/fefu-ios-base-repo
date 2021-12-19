@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0zT-xx-m0g">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0zT-xx-m0g">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="-183" y="-25"/>
         </scene>
-        <!--Start View Controller-->
+        <!--View Controller-->
         <scene sceneID="M8A-ER-uqb">
             <objects>
-                <viewController id="Hg5-Md-4eP" customClass="StartViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ViewController" storyboardIdentifier="ViewController" id="Hg5-Md-4eP" customClass="ViewController" customModule="fefuactivity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7pH-8Y-oeu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -133,7 +133,7 @@
         <!--Enter View Controller-->
         <scene sceneID="EWw-cy-rxk">
             <objects>
-                <viewController id="c2l-7g-LhH" customClass="EnterViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="EnterViewController" storyboardIdentifier="EnterViewController" id="c2l-7g-LhH" customClass="EnterViewController" customModule="fefuactivity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Knw-ST-fHX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -152,6 +152,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="Button:" destination="c2l-7g-LhH" eventType="touchUpInside" id="kBt-7y-m8l"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вход" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="999-OI-9Kp">
                                 <rect key="frame" x="20" y="150" width="374" height="41"/>
@@ -165,7 +168,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Пароль" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MiB-Q2-iK8">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="sdf" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MiB-Q2-iK8">
                                 <rect key="frame" x="20" y="295" width="374" height="34"/>
                                 <color key="textColor" name="Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -199,6 +202,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="11c-f2-ya1"/>
+                    <connections>
+                        <outlet property="LoginText" destination="F5h-G5-ICY" id="0Gc-OY-Jyn"/>
+                        <outlet property="PasswordText" destination="MiB-Q2-iK8" id="wGL-qa-cs4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KQ-01-Bn1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -207,7 +214,7 @@
         <!--Register View Controller-->
         <scene sceneID="0Lp-5v-hSU">
             <objects>
-                <viewController id="ht6-Sh-RXO" customClass="RegisterViewController" sceneMemberID="viewController">
+                <viewController id="ht6-Sh-RXO" customClass="RegisterViewController" customModule="fefuactivity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FH7-cu-eqA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <subviews>
@@ -238,6 +245,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="Button:" destination="ht6-Sh-RXO" eventType="touchUpInside" id="jlw-3j-7MP"/>
                                     <segue destination="1f3-go-jgE" kind="presentation" id="9o6-jb-j8C"/>
                                 </connections>
                             </button>
@@ -265,7 +273,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="view.frame" value="CGRect(x: 0, y: 0, width: 343.34, height: 26.5)" localized="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Пароль" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z06-VU-IUv">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="sdf" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z06-VU-IUv">
                                 <rect key="frame" x="20" y="260" width="374" height="34"/>
                                 <color key="textColor" name="Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -274,7 +282,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="view.frame" value="CGRect(x: 0, y: 0, width: 343.34, height: 26.5)" localized="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Плвторить пароль" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNN-f6-NwG">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="sdf" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNN-f6-NwG">
                                 <rect key="frame" x="20" y="324" width="374" height="34"/>
                                 <color key="textColor" name="Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -292,15 +300,6 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="view.frame" value="CGRect(x: 0, y: 0, width: 343.34, height: 26.5)" localized="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Пол" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tvz-nE-0e1">
-                                <rect key="frame" x="20" y="452" width="374" height="34"/>
-                                <color key="textColor" name="Color"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="view.frame" value="CGRect(x: 0, y: 0, width: 343.34, height: 26.5)" localized="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="LogoSplash" translatesAutoresizingMaskIntoConstraints="NO" id="zgL-fr-2Ws">
                                 <rect key="frame" x="196.5" y="789" width="21" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -311,20 +310,24 @@
                                 </constraints>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="large" weight="black"/>
                             </imageView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B1g-S9-2yh">
+                                <rect key="frame" x="0.0" y="452" width="414" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="joJ-Qr-7lL"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tA2-rL-upI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Mrc-1d-EZU" firstAttribute="centerX" secondItem="FH7-cu-eqA" secondAttribute="centerX" id="4SG-JV-TiH"/>
                             <constraint firstItem="sEA-yu-Guj" firstAttribute="top" secondItem="GNN-f6-NwG" secondAttribute="bottom" constant="30" id="7zK-sE-8yZ"/>
-                            <constraint firstItem="tA2-rL-upI" firstAttribute="trailing" secondItem="Tvz-nE-0e1" secondAttribute="trailing" constant="20" id="97b-fK-oU5"/>
                             <constraint firstItem="DPf-sY-Z7b" firstAttribute="leading" secondItem="tA2-rL-upI" secondAttribute="leading" constant="174" id="AHh-GN-bO3"/>
                             <constraint firstItem="sEA-yu-Guj" firstAttribute="leading" secondItem="tA2-rL-upI" secondAttribute="leading" constant="20" id="AQI-JL-xTY"/>
                             <constraint firstItem="LHh-IO-Mae" firstAttribute="leading" secondItem="tA2-rL-upI" secondAttribute="leading" constant="20" id="AcQ-nh-bAj"/>
                             <constraint firstItem="rdn-fY-3Y9" firstAttribute="leading" secondItem="tA2-rL-upI" secondAttribute="leading" constant="17" id="B8v-Ij-gTX"/>
                             <constraint firstItem="tA2-rL-upI" firstAttribute="trailing" secondItem="sEA-yu-Guj" secondAttribute="trailing" constant="20" id="DBZ-a6-niE"/>
                             <constraint firstItem="aSI-BM-4wb" firstAttribute="leading" secondItem="tA2-rL-upI" secondAttribute="leading" constant="20" id="GYk-5G-oSQ"/>
-                            <constraint firstItem="Tvz-nE-0e1" firstAttribute="top" secondItem="sEA-yu-Guj" secondAttribute="bottom" constant="30" id="I86-AH-Yvb"/>
                             <constraint firstItem="LHh-IO-Mae" firstAttribute="top" secondItem="FH7-cu-eqA" secondAttribute="topMargin" constant="64" id="Ji2-L8-BI1"/>
                             <constraint firstItem="tA2-rL-upI" firstAttribute="trailing" secondItem="rdn-fY-3Y9" secondAttribute="trailing" constant="17" id="K4i-PG-XkO"/>
                             <constraint firstItem="DPf-sY-Z7b" firstAttribute="top" secondItem="rdn-fY-3Y9" secondAttribute="bottom" constant="81" id="NWR-Mi-8QX"/>
@@ -333,20 +336,21 @@
                             <constraint firstItem="tA2-rL-upI" firstAttribute="trailing" secondItem="Z06-VU-IUv" secondAttribute="trailing" constant="20" id="PnH-WX-04c"/>
                             <constraint firstItem="sEA-yu-Guj" firstAttribute="centerX" secondItem="FH7-cu-eqA" secondAttribute="centerX" id="RHb-vP-0ld"/>
                             <constraint firstItem="aSI-BM-4wb" firstAttribute="centerX" secondItem="FH7-cu-eqA" secondAttribute="centerX" id="Tz7-d7-OjZ"/>
+                            <constraint firstItem="B1g-S9-2yh" firstAttribute="top" secondItem="sEA-yu-Guj" secondAttribute="bottom" constant="30" id="VgI-Rr-3wN"/>
                             <constraint firstItem="GNN-f6-NwG" firstAttribute="top" secondItem="Z06-VU-IUv" secondAttribute="bottom" constant="30" id="XEw-fi-OdI"/>
-                            <constraint firstItem="Mrc-1d-EZU" firstAttribute="top" secondItem="Tvz-nE-0e1" secondAttribute="bottom" constant="24" id="YhQ-fu-2Ac"/>
                             <constraint firstItem="zgL-fr-2Ws" firstAttribute="top" secondItem="DPf-sY-Z7b" secondAttribute="bottom" constant="15" id="a4W-5G-IVk"/>
                             <constraint firstItem="GNN-f6-NwG" firstAttribute="leading" secondItem="tA2-rL-upI" secondAttribute="leading" constant="20" id="bGX-WN-AU1"/>
+                            <constraint firstItem="B1g-S9-2yh" firstAttribute="leading" secondItem="tA2-rL-upI" secondAttribute="leading" id="baO-gI-77O"/>
+                            <constraint firstItem="Mrc-1d-EZU" firstAttribute="top" secondItem="B1g-S9-2yh" secondAttribute="bottom" constant="24" id="bv1-3N-Goh"/>
                             <constraint firstItem="aSI-BM-4wb" firstAttribute="centerX" secondItem="FH7-cu-eqA" secondAttribute="centerX" id="dY9-S0-5Mm"/>
                             <constraint firstItem="tA2-rL-upI" firstAttribute="bottom" secondItem="zgL-fr-2Ws" secondAttribute="bottom" constant="49" id="dp2-ew-MAh"/>
-                            <constraint firstItem="Tvz-nE-0e1" firstAttribute="centerX" secondItem="FH7-cu-eqA" secondAttribute="centerX" id="eI5-u5-5Zp"/>
-                            <constraint firstItem="Tvz-nE-0e1" firstAttribute="leading" secondItem="tA2-rL-upI" secondAttribute="leading" constant="20" id="fBC-5W-NY3"/>
                             <constraint firstItem="Mrc-1d-EZU" firstAttribute="leading" secondItem="tA2-rL-upI" secondAttribute="leading" constant="40" id="fzg-Ex-YQP"/>
                             <constraint firstItem="Z06-VU-IUv" firstAttribute="top" secondItem="aSI-BM-4wb" secondAttribute="bottom" constant="24" id="hn5-Ho-F50"/>
                             <constraint firstItem="tA2-rL-upI" firstAttribute="trailing" secondItem="DPf-sY-Z7b" secondAttribute="trailing" constant="174" id="i5D-ke-1Kw"/>
                             <constraint firstItem="Z06-VU-IUv" firstAttribute="centerX" secondItem="FH7-cu-eqA" secondAttribute="centerX" id="iE8-DU-Dey"/>
                             <constraint firstItem="GNN-f6-NwG" firstAttribute="centerX" secondItem="FH7-cu-eqA" secondAttribute="centerX" id="ppz-oY-BGs"/>
                             <constraint firstItem="zgL-fr-2Ws" firstAttribute="centerX" secondItem="FH7-cu-eqA" secondAttribute="centerX" id="rOF-py-OKq"/>
+                            <constraint firstItem="B1g-S9-2yh" firstAttribute="trailing" secondItem="tA2-rL-upI" secondAttribute="trailing" id="s17-Mh-nF7"/>
                             <constraint firstItem="zgL-fr-2Ws" firstAttribute="centerX" secondItem="FH7-cu-eqA" secondAttribute="centerX" id="sTZ-Rg-W9S"/>
                             <constraint firstItem="LHh-IO-Mae" firstAttribute="centerX" secondItem="FH7-cu-eqA" secondAttribute="centerX" id="tCg-GC-twW"/>
                             <constraint firstItem="Z06-VU-IUv" firstAttribute="leading" secondItem="tA2-rL-upI" secondAttribute="leading" constant="20" id="v2I-L5-dBR"/>
@@ -355,6 +359,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9oi-BC-Dde"/>
+                    <connections>
+                        <outlet property="Gender" destination="B1g-S9-2yh" id="vcm-bB-Ga1"/>
+                        <outlet property="LoginText" destination="aSI-BM-4wb" id="S0o-Ce-HMT"/>
+                        <outlet property="Name" destination="sEA-yu-Guj" id="m9J-X9-xrU"/>
+                        <outlet property="PasswordText" destination="Z06-VU-IUv" id="NqX-ZP-hBi"/>
+                        <outlet property="SecondPasswordText" destination="GNN-f6-NwG" id="bxR-lg-PDf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KAI-OI-162" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -363,7 +374,7 @@
         <!--Активности-->
         <scene sceneID="8K9-jy-46G">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="qTt-oc-4BT" customClass="ActivityStartViewController" customModule="fefuactivity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ActivityStartViewController" storyboardIdentifier="ActivityStartViewController" modalPresentationStyle="fullScreen" id="qTt-oc-4BT" customClass="ActivityStartViewController" customModule="fefuactivity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gjR-R1-7AU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
