@@ -10,6 +10,7 @@ import UIKit
 class RegisterViewController: UIViewController {
     private let genders = ["Мужской", "Женский"]
     private var genderNum = 0
+    let encoder = JSONEncoder()
     @IBOutlet weak var LoginText: UITextField!
     @IBOutlet weak var PasswordText: UITextField!
     @IBOutlet weak var SecondPasswordText: UITextField!
@@ -20,7 +21,6 @@ class RegisterViewController: UIViewController {
         let password = PasswordText.text ?? ""
         let passwordConfirm = SecondPasswordText.text ?? ""
         let name = Name.text ?? ""
-        let gender = Gender
                 
         if passwordConfirm != password {
             let alert = UIAlertController(title: "Ошибка", message: "Пароли не совпадают", preferredStyle: .alert)
@@ -32,27 +32,34 @@ class RegisterViewController: UIViewController {
                 
         do {
             let reqBody = try AuthService.encoder.encode(body)
+
             let queue = DispatchQueue.global(qos: .utility)
+
             AuthService.register(reqBody) { user in queue.async {
-                            UserDefaults.standard.set(user.token, forKey: "token")
-                        }
-                    } onError: { err in
-                        DispatchQueue.main.async {
-                            var alertText = ""
-                            for (_, values) in err.errors.reversed() {
-                                for e in values {
-                                    alertText += e + "\n"
-                                }
-                            }
-                            
-                            let alert = UIAlertController(title: "Проверьте поля", message: alertText, preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "Повторить попытку", style: .cancel, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
-                        }
+                    UserDefaults.standard.set(user.token, forKey: "token")
+                print("do")
+
+                    print("token" + user.token)
+                
                     }
-                } catch {
-                    print(error)
+            } onError: { err in
+                DispatchQueue.main.async {
+                        var alertText = ""
+                        for (_, values) in err.errors.reversed() {
+                            for e in values {
+                                alertText += e + "\n"
+                            }
+                        }
+                            
+                    let alert = UIAlertController(title: "Проверьте поля", message: alertText, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Повторить попытку", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
+            }
+        } catch {
+                    print("error")
+                    print( error)
+            }
             
     }
     override func viewDidLoad() {

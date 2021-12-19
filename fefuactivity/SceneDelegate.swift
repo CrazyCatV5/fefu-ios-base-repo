@@ -18,14 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let winScene = (scene as? UIWindowScene) else { return }
                 if UserDefaults.standard.object(forKey: "token") != nil {
-                    let window = UIWindow(windowScene: winScene)
-                    
-                    let vc = ActivityStartViewController(nibName: "ActivityStartViewController", bundle: nil)
-                    window.rootViewController = vc
-                    self.window = window
-                    
-                    window.makeKeyAndVisible()
-                }
+                    let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let newViewcontroller:UIViewController = mainstoryboard.instantiateViewController(withIdentifier:"ActivityStartViewController") as! ActivityStartViewController
+                    window?.rootViewController = newViewcontroller
+                    window?.makeKeyAndVisible()                }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -168,7 +168,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Пароль" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MiB-Q2-iK8">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="sdf" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MiB-Q2-iK8">
                                 <rect key="frame" x="20" y="295" width="374" height="34"/>
                                 <color key="textColor" name="Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -273,7 +273,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="view.frame" value="CGRect(x: 0, y: 0, width: 343.34, height: 26.5)" localized="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Пароль" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z06-VU-IUv">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="sdf" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z06-VU-IUv">
                                 <rect key="frame" x="20" y="260" width="374" height="34"/>
                                 <color key="textColor" name="Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -282,7 +282,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="view.frame" value="CGRect(x: 0, y: 0, width: 343.34, height: 26.5)" localized="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Плвторить пароль" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNN-f6-NwG">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="sdf" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNN-f6-NwG">
                                 <rect key="frame" x="20" y="324" width="374" height="34"/>
                                 <color key="textColor" name="Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -374,7 +374,7 @@
         <!--Активности-->
         <scene sceneID="8K9-jy-46G">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="qTt-oc-4BT" customClass="ActivityStartViewController" customModule="fefuactivity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ActivityStartViewController" storyboardIdentifier="ActivityStartViewController" modalPresentationStyle="fullScreen" id="qTt-oc-4BT" customClass="ActivityStartViewController" customModule="fefuactivity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gjR-R1-7AU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -602,10 +602,10 @@
             </objects>
             <point key="canvasLocation" x="3386" y="447"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tabs View Controller-->
         <scene sceneID="Bxh-qg-XCB">
             <objects>
-                <tabBarController id="1f3-go-jgE" sceneMemberID="viewController">
+                <tabBarController id="1f3-go-jgE" customClass="TabsViewController" customModule="fefuactivity" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Cu1-iw-b0q"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9hz-nT-Jvu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>

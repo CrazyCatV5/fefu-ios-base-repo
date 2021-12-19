@@ -73,17 +73,22 @@ class AuthService {
         let session = URLSession.shared
         
         let task = session.dataTask(with: urlReq) { data, response, error in
-            
+            print("dod")
+
             guard let data = data else {
                 return
             }
-            
+            print("dod")
+
             if let res = response as? HTTPURLResponse {
                 switch res.statusCode {
                 case 422:
                     do {
                         let errData = try AuthService.decoder.decode(ApiError.self, from: data)
                         onError(errData)
+                        
+                        print("dod4")
+                        print(errData)
                         return
                     } catch let e {
                         print("Decode error: \(e)")
@@ -92,14 +97,20 @@ class AuthService {
                     do {
                         let userData = try AuthService.decoder.decode(AuthUserModel.self, from: data)
                         completion(userData)
+                        print("dod2")
+
                         return
                     } catch let e {
                         print("Decode error: \(e)")
                     }
                 default:
+                    print("dod")
+
                     return
                 }
             }
+            print("dod")
+
         }
         task.resume()
     }

@@ -23,6 +23,7 @@
 		1DFF1C08276F494D001DFD1E /* ConnectWithAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF1C07276F494D001DFD1E /* ConnectWithAPI.swift */; };
 		1DFF1C0A276F5ABF001DFD1E /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF1C09276F5ABF001DFD1E /* EnterViewController.swift */; };
 		1DFF1C0C276F5B1F001DFD1E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF1C0B276F5B1F001DFD1E /* RegisterViewController.swift */; };
+		1DFF1C0E276F93CA001DFD1E /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFF1C0D276F93CA001DFD1E /* TabsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		1DFF1C07276F494D001DFD1E /* ConnectWithAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectWithAPI.swift; sourceTree = "<group>"; };
 		1DFF1C09276F5ABF001DFD1E /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
 		1DFF1C0B276F5B1F001DFD1E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		1DFF1C0D276F93CA001DFD1E /* TabsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				1DFF1C07276F494D001DFD1E /* ConnectWithAPI.swift */,
 				1DFF1C09276F5ABF001DFD1E /* EnterViewController.swift */,
 				1DFF1C0B276F5B1F001DFD1E /* RegisterViewController.swift */,
+				1DFF1C0D276F93CA001DFD1E /* TabsViewController.swift */,
 			);
 			path = "Дз4";
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				1D51DA5C273E924000076142 /* CellFinal.swift in Sources */,
 				1DFF1C0A276F5ABF001DFD1E /* EnterViewController.swift in Sources */,
 				1D51DA58273E868500076142 /* ActivityClass.swift in Sources */,
+				1DFF1C0E276F93CA001DFD1E /* TabsViewController.swift in Sources */,
 				1D134A64275CEA8E0090C27E /* ActivitySave.xcdatamodeld in Sources */,
 				1D3CCD36274916CB00696239 /* MyMapView.swift in Sources */,
 				1DFF1C08276F494D001DFD1E /* ConnectWithAPI.swift in Sources */,
