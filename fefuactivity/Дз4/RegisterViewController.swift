@@ -37,7 +37,6 @@ class RegisterViewController: UIViewController {
 
             AuthService.register(reqBody) { user in queue.async {
                     UserDefaults.standard.set(user.token, forKey: "token")
-                print("do")
 
                     print("token" + user.token)
                 
@@ -57,8 +56,8 @@ class RegisterViewController: UIViewController {
                 }
             }
         } catch {
-                    print("error")
-                    print( error)
+            
+                print( error)
             }
             
     }

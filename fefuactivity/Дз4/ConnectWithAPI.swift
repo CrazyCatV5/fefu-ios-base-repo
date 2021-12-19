@@ -22,10 +22,6 @@ struct ApiError: Decodable {
     let errors: Dictionary<String, [String]>
 }
 
-struct LoginErrors: Decodable {
-    let login: [String]
-}
-
 struct Gender: Decodable {
     let code: Int
     let name: String

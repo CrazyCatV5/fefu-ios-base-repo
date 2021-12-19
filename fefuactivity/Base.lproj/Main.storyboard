@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="-183" y="-25"/>
         </scene>
-        <!--Start View Controller-->
+        <!--View Controller-->
         <scene sceneID="M8A-ER-uqb">
             <objects>
-                <viewController id="Hg5-Md-4eP" customClass="StartViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ViewController" storyboardIdentifier="ViewController" id="Hg5-Md-4eP" customClass="ViewController" customModule="fefuactivity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7pH-8Y-oeu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -133,7 +133,7 @@
         <!--Enter View Controller-->
         <scene sceneID="EWw-cy-rxk">
             <objects>
-                <viewController id="c2l-7g-LhH" customClass="EnterViewController" customModule="fefuactivity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="EnterViewController" storyboardIdentifier="EnterViewController" id="c2l-7g-LhH" customClass="EnterViewController" customModule="fefuactivity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Knw-ST-fHX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -602,10 +602,10 @@
             </objects>
             <point key="canvasLocation" x="3386" y="447"/>
         </scene>
-        <!--Tabs View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="Bxh-qg-XCB">
             <objects>
-                <tabBarController id="1f3-go-jgE" customClass="TabsViewController" customModule="fefuactivity" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="1f3-go-jgE" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Cu1-iw-b0q"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9hz-nT-Jvu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
