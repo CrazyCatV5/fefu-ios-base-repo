@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard (scene as? UIWindowScene) != nil else { return }
                 if UserDefaults.standard.object(forKey: "token") != nil {
                     let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let newViewcontroller:UIViewController = mainstoryboard.instantiateViewController(withIdentifier:"ViewController") as! ViewController
+                    let newViewcontroller:UIViewController = mainstoryboard.instantiateViewController(withIdentifier:"ActivityStartViewController") as! ActivityStartViewController
                     window?.rootViewController = newViewcontroller
                     window?.makeKeyAndVisible()                }
     }

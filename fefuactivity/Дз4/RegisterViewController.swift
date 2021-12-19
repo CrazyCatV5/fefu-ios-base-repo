@@ -24,7 +24,7 @@ class RegisterViewController: UIViewController {
                 
         if passwordConfirm != password {
             let alert = UIAlertController(title: "Ошибка", message: "Пароли не совпадают", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ясно", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "все фигня давай по новой", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
                 
@@ -43,15 +43,8 @@ class RegisterViewController: UIViewController {
                     }
             } onError: { err in
                 DispatchQueue.main.async {
-                        var alertText = ""
-                        for (_, values) in err.errors.reversed() {
-                            for e in values {
-                                alertText += e + "\n"
-                            }
-                        }
-                            
-                    let alert = UIAlertController(title: "Проверьте поля", message: alertText, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Повторить попытку", style: .cancel, handler: nil))
+                    let alert = UIAlertController(title: "Что-то", message: "Пошло не так", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Все фигня давай по новой", style: .cancel, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             }

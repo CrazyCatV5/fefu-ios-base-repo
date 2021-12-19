@@ -24,10 +24,10 @@ class EnterViewController: UIViewController {
 
             } onError: { err in
                 DispatchQueue.main.async {
-                            
                     let alert = UIAlertController(title: "Что-то", message: "Пошло не так", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Все фигня давай по новой", style: .cancel, handler: nil))
-                    self.present(alert, animated: true, completion: nil)                }
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
         } catch {
             print(error)
